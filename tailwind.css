@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Allow changing font family via CMS */
+  html {
+    --font-family: "VTEX Trust", sans-serif;
+    font-family: var(--font-family);
+  }
+
+  /** Remove default styles from input[type=number] */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+
+  /* Para navegadores WebKit (Chrome, Edge, Safari) */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #999, #666);
+    border-radius: 10px;
+    transition: background 0.3s;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #777, #444);
+  }
+}
+
+@layer components {
+  /** Prevent scroll when modal is open */
+  .no-scroll {
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  .markdown code {
+    @apply my-2 !rounded-lg bg-[#f91880]/10 border border-[#f91880] block
+      whitespace-pre-wrap !p-2;
+  }
+}
+
+@layer utilities {
+  /** Remove scrollbar from overflow-auto */
+  .scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}
