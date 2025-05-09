@@ -28,9 +28,11 @@ export default async function loader(
 ): Promise<Category | Category[]> {
   const vcs = getClient(accountName, ctx);
 
-  return await vcs
+  const response = await vcs
     ["GET /api/catalog_system/pub/category/tree/:level"]({
       level: categoryLevels ?? 1,
     }, { ...STALE, headers: withSegmentCookie(getSegmentFromBag(ctx)) })
     .then((res) => res.json());
+
+  return response;
 }

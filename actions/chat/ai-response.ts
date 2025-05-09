@@ -19,7 +19,6 @@ export default async function aiResponse(
   req: Request,
   ctx: AppContext,
 ) {
-
   // Allow Cors
   Object.entries(allowCorsFor(req)).map(([name, value]) => {
     ctx.response.headers.set(name, value);
@@ -33,8 +32,8 @@ export default async function aiResponse(
     threadMessages: initialThreadMessages = [],
   } = props;
 
-  const threadMessages = initialThreadMessages.length > 0 
-    ? initialThreadMessages 
+  const threadMessages = initialThreadMessages.length > 0
+    ? initialThreadMessages
     : getLocalThread(threadId);
 
   let assistant = ctx.assistant;

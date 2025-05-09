@@ -21,6 +21,7 @@ export const listMCPTools = async (
   options?: Options,
 ): Promise<Record<string, ReturnType<typeof createTool>>> => {
   const baseUrl = mcpServerURL;
+
   const meta = await fetchMeta(baseUrl);
 
   // deno-lint-ignore no-explicit-any
@@ -44,7 +45,6 @@ export const listMCPTools = async (
           },
         ),
         execute: async ({ context }) => {
-
           const response = await fetch(
             new URL(`/live/invoke/${tool.resolveType}`, baseUrl),
             {
@@ -76,7 +76,8 @@ export const listMCPTools = async (
 
   createdTools["get-buy-product-url"] = createTool({
     id: "get-buy-product-url",
-    description: "Returns the URL of that send the user directly to the cart with the product added.",
+    description:
+      "Returns the URL of that send the user directly to the cart with the product added.",
     inputSchema: z.object({
       productId: z.string(),
     }),
@@ -89,7 +90,10 @@ export const listMCPTools = async (
       if (!url) {
         return { url: undefined };
       }
-      return { url: `https://www.miess.com.br/checkout/cart/add?sku=${context.productId}&qty=1&seller=1` };
+      return {
+        url:
+          `https://www.webcontinental.com.br/checkout/cart/add?sku=${context.productId}&qty=1&seller=1`,
+      };
     },
   });
 

@@ -8,21 +8,24 @@ export default defineConfig({
     manifest,
     htmx: true,
     useServer: (deco, hono) => {
-      hono.use("/*", mcpServer(deco, {
-        include: [
-          "site/loaders/brands/brands.ts",
-          "site/loaders/categories/tree.ts",
-          "site/loaders/collections/list.ts",
-          "site/loaders/orders/getOrderAnalisys.ts",
-          "site/loaders/orders/listAllOrders.ts",
-          "site/loaders/orders/orderItems.ts",
-          "site/loaders/orders/getOrderById.ts",
-          "site/loaders/product/productBySlug.ts",
-          "site/loaders/product/productByProductIds.ts",
-          "site/loaders/product/productBySkuIds.ts",
-          "site/loaders/product/productByTerm.ts",
-        ]
-      }));
+      hono.use(
+        "/*",
+        mcpServer(deco, {
+          include: [
+            "site/loaders/brands/brands.ts",
+            "site/loaders/categories/tree.ts",
+            "site/loaders/product/productBySlug.ts",
+            "site/loaders/product/productByProductIds.ts",
+            "site/loaders/product/productBySkuIds.ts",
+            "site/loaders/product/productByTerm.ts",
+            "site/loaders/call-center/aboutUs.ts",
+            "site/loaders/call-center/exchangesAndReturns.ts",
+            "site/loaders/call-center/frequentlyAskedQuestions.ts",
+            "site/loaders/call-center/purchasesAndOrders.ts",
+            "site/loaders/call-center/storeLocations.ts",
+          ],
+        }),
+      );
     },
   }),
 });

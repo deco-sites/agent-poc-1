@@ -81,7 +81,7 @@ const loader = async (
   const params = {
     fq: props.fq,
     _from: 0,
-    _to: Math.max((props.count || 12) - 1, 0),
+    _to: Math.max((props.count || 3) - 1, 0),
   } as {
     _from?: number;
     _to?: number;

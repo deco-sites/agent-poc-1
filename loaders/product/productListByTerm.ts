@@ -76,7 +76,7 @@ const loader = async (
 
   const params = {
     _from: 0,
-    _to: Math.max((props.count || 12) - 1, 0),
+    _to: Math.max((props.count || 3) - 1, 0),
     fq: [],
   } as {
     _from?: number;

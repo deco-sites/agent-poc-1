@@ -59,7 +59,9 @@ export default function stream(
 Today is ${new Date().toUTCString()} UTC
 
 Current Thread Id: ${threadId}
-Current Account Name: miess
+Current Account Name: lojawebcontinental
+Current Domain: www.webcontinental.com.br
+If the user asks for a url from the site, you need to return the url of with the domain of the site.
 
 <old-messages>
 ${oldMessages}
@@ -71,6 +73,8 @@ ${message}
 `.slice(0, 200000); // anthropic max tokens
 
   const stream = (async function* () {
+    const tools = await listMCPTools(ctx.mcpServerURL!);
+
     const agentStream = await assistant.agent!.stream(
       messageWithContext,
       {
@@ -79,17 +83,17 @@ ${message}
         maxSteps: 10,
         system: ctx.globalContext,
         onError: ({ error }) => {
-          logger.error(`Error streaming AI response: ${message}`, { error });
+          logger.error("Error streaming AI response: ${message}", { error });
           console.error(error);
         },
         // @ts-ignore ignore
-        tools: await listMCPTools(ctx.mcpServerURL!),
+        tools,
       },
     );
 
     for await (const part of agentStream.fullStream) {
       if (part.type === "error") {
-        logger.error(`Error streaming AI response: ${message}`, {
+        logger.error("Error streaming AI response: ${message}", {
           error: part.error,
         });
         console.error(part.error);

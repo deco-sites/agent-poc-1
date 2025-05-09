@@ -50,9 +50,9 @@ export default function Content({
 
   return (
     <>
-      <span class="size-16 flex justify-center items-center">
-        <span class="size-full flex justify-center items-center bg-primary p-2">
-          <img src="https://data.decoassets.com/miess-01/43eda075-8606-479a-b818-0d571b1a7515/1742407374922-fdc66dd4-4bf9-4f7a-a8ec-04fa55fa49a9" />
+      <span class="flex justify-center items-center">
+        <span class="size-full flex justify-center items-center p-2">
+          <img src="https://lojawebcontinental.vtexassets.com/arquivos/logo-webcontinental-checkout.png" />
         </span>
       </span>
       {!IS_BROWSER

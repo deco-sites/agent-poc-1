@@ -15,7 +15,7 @@ export default {
         "primary": {
           darkest: "#940F3B",
           dark: "#C6144F",
-          DEFAULT: "#361328",
+          DEFAULT: "#0098ff",
           light: "#FFC4DD",
           lightest: "#FFF3F6",
         },
